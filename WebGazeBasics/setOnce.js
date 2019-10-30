@@ -5,32 +5,25 @@ var webPathName = window.location.pathname;
 var productData = "";
 
 var ElBody = document.querySelectorAll("body");
-var ElBrandSection = document.querySelectorAll(".brand_section");
-var ElSwiperWrapper = document.querySelectorAll(".swiper-wrapper");
-
-var brandSectionScrollX = null;
-var swiperWrapperX = null;
 
 var productCount = 0; // 1
 var seperator = "|";
 
-var gazeX = 100;
-var gazeY = 100;
+var gazeX = 0;
+var gazeY = 0;
 
-//var isScriptInjected = false;
+
+
+
 
 /* Add eventListener */
-ElBody[0].addEventListener('scroll', onEventUpdate);
-ElBody[0].addEventListener('click', onEventUpdate);
+ElBody[0].addEventListener('touchend', onEventUpdate);
+//ElBody[0].addEventListener('scroll', onEventUpdate);
+//ElBody[0].addEventListener('click', onEventUpdate);
+//ElBody[0].addEventListener('transitioned', onEventUpdate);
 //ElBody[0].addEventListener('mouseover', onEventUpdate);
 //ElBody[0].addEventListener('touchstart', onEventUpdate);
 //ElBody[0].addEventListener('touchmove', onEventUpdate);
-ElBody[0].addEventListener('touchend', onEventUpdate);
-ElBody[0].addEventListener('transitioned', onEventUpdate);
-
-for (var i = 0; i < ElBrandSection.length; i++) {
-    ElBrandSection[i].addEventListener('scroll', onEventUpdate);
-}
 
 
 /* gaze point data transfer preparing */
@@ -51,159 +44,13 @@ element[0].appendChild(divX);
 element[0].appendChild(divY);
 
 
-
-/* find out webpage category */
-console.log("webpage PathName:", webPathName);
-var pageCategory = "";
-if (webPathName.includes("mai") == true) {
-    
-    pageCategory = "main";
-    console.log("Main page");
-    productData = "Main_page,test";
+/* in case of brandi main page */
+var el = document.querySelectorAll(".bannerBeforeLoad")   // ".bannerBeforeLoad" //".frame" ".lightSlider"
+if (el.length > 0) {
+    el[0].style.height = "195px"
+    var testR = el[0].getBoundingClientRect()
+    productData = "style.height :" + testR.height.toString()
     callNativeApp();
-    
-    var productClassName = [".swiper-container-horizontal", ".module-product__li", ".main__section-contents", ".main__section", ".main__cookit", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section-header--flex"]
-    // [".main__visual swiper-container swiper-container-horizontal", "module-product__li ", "main__section-contents", "main__section", "main__cookit", "main__section main__section--none-horizon", "main__section main__section--none-horizon", "main__section main__section--none-horizon", "main__section main__section--none-horizon", "main__section-header main__section-header--flex"]
-    //[".swiper-slide", ".feed-item"]; // ".swiper-slide.swiper-slide-active", ".footer_m"
-    
-} else if (webPathName.includes("pro") == true) {
-    
-    pageCategory = "product"
-    console.log("Product detail page")
-    productData = "Product_detail_page,test"
-    callNativeApp()
-    
-    var productClassName = [".slick-with-video--product", ".product-detail__top", ".product-detail__section--pb0", ".product-detail__section", ".productReviewArea"] //[".item_detail_view", ".detail_info_area", ".detail_item_wrap", ".brand_section", ".review_section", ".qa_section", ".evt_connent", ".detail_item_recommend", ".post_more"]
-    
-} else {
-    
-    pageCategory = "category"
-    console.log("Other page")
-    productData = "Other_page,test"
-    callNativeApp()
-    
-    var productClassName = [".swiper-slide", ".issue_banner_in", ".content_cnt", ".post_more", ".item_img_view", ".item_detail_view", ".detail_info_area", ".detail_item_wrap", ".brand_section", ".review_section", ".qa_section", ".evt_connent", ".detail_item_recommend"]  // ".swiper-slide.swiper-slide-active"
-    
-}
-
-
-
-
-findProductPageInfo();
-
-findProduct();
-
-
-
-
-function findProductPageInfo() {
-
-    for (var n = 0; n < productClassName.length; n++) {
-        var Elproduct = document.querySelectorAll( productClassName[n] )
-        
-        for (var i = 0; i < Elproduct.length; i++) {
-            
-            var r = Elproduct[i].getBoundingClientRect();
-            var b = document.body.getBoundingClientRect();
-            var offsetY = r.top - b.top;
-            
-            /* only once triggering productCount */
-            productCount = productCount + 1;
-            productData = "productIndex" + seperator + productCount.toString()  // Should be sent by first to match producIndex
-            callNativeApp()
-            
-            productData = "pageCategory" + seperator + pageCategory  // page category setting
-            callNativeApp()
-            
-            productData = "className" + seperator + productClassName[n]
-            callNativeApp()
-            
-            productData = "rectXYWH"+ seperator + r.x.toString() + seperator + offsetY.toString() + seperator + r.width.toString() + seperator + r.height.toString()
-            callNativeApp()
-            
-            console.log("el.top", r.top, " body.top", b.top, " className:", productClassName[n], " rectXYWH:", productData)
-           
-            
-        }
-    }
-    
-    console.log("findProductInfo() ending part")
-}
-
-
-
-/* findProduct function */
-function findProduct() {
-    
-    var productClassName = [".module-product__li"] //[".swiper-container-horizontal", ".module-product__li", ".main__section-contents", ".main__section", ".main__cookit", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section--none-horizon", ".main__section-header--flex"]
-    //[".slick-with-video--product", ".product-detail__top", ".product-detail__section--pb0", ".product-detail__section", ".productReviewArea"] //[".prd_s", ".prd_bd", ".prd_b"];  // product class name of www.21cm.co.kr
-    for (var n = 0; n < productClassName.length; n++) {
-        var Elproduct = document.querySelectorAll( productClassName[n] )
-        
-        for (var i = 0; i < Elproduct.length; i++) {
-            /* find out size and position for each product */
-            var r = Elproduct[i].getBoundingClientRect();
-            var b = document.body.getBoundingClientRect();
-            var offset = r.top - b.top;  // r.y
-            var imageURL = ""
-            var productName = ""
-            
-            console.log("findProduct(), for-loop", i, productClassName[n], Elproduct[i])
-            
-            /* find image source URL */
-            //var imageURL = Elproduct[i].getElementsByTagName("img")[0].currentSrc
-            if ( productClassName[n] == ".module-product__li" ) {
-                imageURL = Elproduct[i].children[0].children[0].children[0].currentSrc
-                productName = Elproduct[i].children[0].children[0].children[0].alt
-                
-                console.log("findProduct(), moduel-product__li class", i, imageURL, productName)
-            }
-            
-            /* find brand */
-            //var brand = Elproduct[i].getElementsByClassName("brand")[0].outerText
-            
-            /* find productName */
-            //var productName = Elproduct[i].getElementsByClassName("name")[0].outerText
-             
-            /* find price */
-            //var price = Elproduct[i].getElementsByClassName("price")[0].outerText
-            
-            /* find product link page URL */
-            //var productURL = Elproduct[i].getElementsByTagName("a")[0].href
-            
-            
-            /* saving to productData string */
-            productCount = productCount + 1;
-            productData = "productIndex" + seperator + productCount.toString()  // Should be sent by first to match producIndex
-            callNativeApp()
-            
-            //productData = "className" + seperator + productClassName[n]
-            //callNativeApp()
-            
-            //productData = "productURL" + seperator + productURL
-            //callNativeApp()
-            
-            //productData = "brand" + seperator + brand
-            //callNativeApp()
-            
-            productData = "imageURL" + seperator + imageURL
-            callNativeApp()
-            
-            productData = "rectXYWH" + seperator + r.x.toString() + seperator + offset.toString() + seperator + r.width.toString() + seperator + r.height.toString()
-            callNativeApp()
-            //console.log("className:", productClassName[n], "rectXYWH:", productData)
-            
-            //productData = "price" + seperator + price
-            //callNativeApp()
-            
-            productData = "productName" + seperator + productName
-            callNativeApp()
-            
-            //console.log("className:", productClassName[n], "rectXYWH:", productData)
-            console.log("findProduct(), imageURL: productName:",  imageURL, productName)
-            
-        }
-    }
 }
 
 
@@ -221,50 +68,73 @@ function callNativeApp() {
 
 
 
-
 /* event handling */
 function onEventUpdate(e) {
 
-    
     var elX = document.querySelectorAll(".gazeX")[0].firstElementChild  //elX.className = "gazeX|4078"
     var elY = document.querySelectorAll(".gazeY")[0].firstElementChild  //elY.className = "gazeY|1234"
-    
-    //productData = "gaze_selfso" + seperator + elX.className + " " + elY.className
-    //callNativeApp()
-    
-    console.log("gazeX:", elX.className, "gazeY:", elY.className);
+
     var strX = elX.className;
     var resX = strX.split("|");
     var strY = elY.className;
     var resY = strY.split("|");
     
-    productData = "gaze_selfso_Int" + seperator + resX + " " + resY
-    callNativeApp()
-    
     var gX = parseInt(resX[1])
     var gY = parseInt(resY[1])
-    
     var gazeX = gX
     var gazeY = gY
     
+    productData = "setOnce.js, gazePoint_Int|" + seperator + gazeX.toString() + " " + gazeY.toString()
+    callNativeApp()
+    
     console.log("gazeX:", gX, "gazeY:", gY);
     
-    /*
-    var el = document.querySelectorAll(".gaze")
-    for (var i = 0; i < el.length; i++) {
-        productData = el[i].className + seperator + "test_selfso"
-        callNativeApp()
-        console.log("Injdected ClassName:,", productData)
-    }
-    */
     
-    console.log("gaze_xy,", gazeX, gazeY);
+    /* draw circle on mini canvas */
+    var scrollTop = window.pageYOffset;  // scroll y position of full webpage
+    drawCanvas(gazeX, gazeY + scrollTop, 5)
     
     /* find out events info by touched event */
-    findProductGazed()
+    //findProductGazed()
+    
+    
+    /* needed to be modified
+    var e = document.elementFromPoint(gazeX, gazeY);
+    productData = "elementFromPoint XY:" + e.x.toString() + " " + e.y.toString()
+    callNativeApp();
+    drawLine(e.x, e.y, e.width, e.height, 20);
+    */
+
     
 }
 
+
+/* draw circle on mini canvas based on gaze position */
+function drawCanvas(x, y, r) {
+    
+    const Elbody = document.querySelector('body');
+    var canvasEl = document.createElement('canvas');
+    canvasEl.style.position = 'absolute';
+    canvasEl.style.left = (x-r).toString() + "px"
+    canvasEl.style.top = (y-r).toString() + "px"
+    
+    canvasEl.width = r * 2
+    canvasEl.height = r * 2
+    
+    canvasEl.style.zIndex = 1000;
+
+    Elbody.insertBefore(canvasEl, Elbody.firstChild);
+
+    var c = canvasEl;
+    var ctx = canvasEl.getContext("2d");
+    ctx.globalAlpha = 0.2;
+
+    ctx.beginPath();
+    ctx.arc(r,r,r,0,2*Math.PI);
+    ctx.fillStyle = "#00AA00";
+    ctx.fill();
+    //ctx.stroke();
+}
 
 
 

@@ -1,8 +1,9 @@
+
 //
-//  Gaze.swift
-//  EyeCursor
+//  ViewController.swift
+//  WebGazeBasics
 //
-//  Created by Steve on 13/10/2019.
+//  Created by Steve on 26/10/2019.
 //  Copyright © 2019 Visualcamp. All rights reserved.
 //
 

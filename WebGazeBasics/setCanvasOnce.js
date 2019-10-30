@@ -2,8 +2,8 @@
 const bodyEl = document.querySelector('body');
 const canvasEl = document.createElement('canvas');
 canvasEl.style.position = 'absolute';
-canvasEl.style.top = 0;
-canvasEl.style.left = 0;
+canvasEl.style.top = '0px';
+canvasEl.style.left = '0px';
 canvasEl.style.zIndex = 1000;
 
 //canvasEl.width = 375;  // document.body.clientWidth;   // <-- will be called in other place

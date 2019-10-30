@@ -13,7 +13,30 @@
 		AAD853192363C56F00F5E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD853172363C56F00F5E079 /* Main.storyboard */; };
 		AAD8531B2363C57100F5E079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD8531A2363C57100F5E079 /* Assets.xcassets */; };
 		AAD8531E2363C57100F5E079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD8531C2363C57100F5E079 /* LaunchScreen.storyboard */; };
+		AAD853272363C68200F5E079 /* TrueGaze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD853252363C67B00F5E079 /* TrueGaze.framework */; };
+		AAD853282363C68200F5E079 /* TrueGaze.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAD853252363C67B00F5E079 /* TrueGaze.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAD8532B2363C6DB00F5E079 /* GazeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8532A2363C6DB00F5E079 /* GazeData.swift */; };
+		AAD8532D2363C9FA00F5E079 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8532C2363C9FA00F5E079 /* WebViewController.swift */; };
+		AAD8532F2363CD8500F5E079 /* WebData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8532E2363CD8500F5E079 /* WebData.swift */; };
+		AAD853312363E28D00F5E079 /* sendGazeToApp.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853302363E28D00F5E079 /* sendGazeToApp.js */; };
+		AAD853332363E3B000F5E079 /* setOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853322363E3AF00F5E079 /* setOnce.js */; };
+		AAD853352363E49F00F5E079 /* parseWebpageOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853342363E49F00F5E079 /* parseWebpageOnce.js */; };
+		AAD85337236557EE00F5E079 /* setCanvasOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD85336236557EE00F5E079 /* setCanvasOnce.js */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAD853292363C68200F5E079 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AAD853282363C68200F5E079 /* TrueGaze.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AAD8530E2363C56F00F5E079 /* WebGazeBasics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebGazeBasics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +47,14 @@
 		AAD8531A2363C57100F5E079 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD8531D2363C57100F5E079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD8531F2363C57100F5E079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD853252363C67B00F5E079 /* TrueGaze.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TrueGaze.framework; sourceTree = "<group>"; };
+		AAD8532A2363C6DB00F5E079 /* GazeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GazeData.swift; sourceTree = "<group>"; };
+		AAD8532C2363C9FA00F5E079 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AAD8532E2363CD8500F5E079 /* WebData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebData.swift; sourceTree = "<group>"; };
+		AAD853302363E28D00F5E079 /* sendGazeToApp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sendGazeToApp.js; sourceTree = "<group>"; };
+		AAD853322363E3AF00F5E079 /* setOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setOnce.js; sourceTree = "<group>"; };
+		AAD853342363E49F00F5E079 /* parseWebpageOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parseWebpageOnce.js; sourceTree = "<group>"; };
+		AAD85336236557EE00F5E079 /* setCanvasOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setCanvasOnce.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD853272363C68200F5E079 /* TrueGaze.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,10 +91,18 @@
 				AAD853112363C56F00F5E079 /* AppDelegate.swift */,
 				AAD853132363C56F00F5E079 /* SceneDelegate.swift */,
 				AAD853152363C56F00F5E079 /* ViewController.swift */,
+				AAD8532C2363C9FA00F5E079 /* WebViewController.swift */,
+				AAD8532A2363C6DB00F5E079 /* GazeData.swift */,
+				AAD8532E2363CD8500F5E079 /* WebData.swift */,
 				AAD853172363C56F00F5E079 /* Main.storyboard */,
+				AAD853322363E3AF00F5E079 /* setOnce.js */,
+				AAD853342363E49F00F5E079 /* parseWebpageOnce.js */,
+				AAD853302363E28D00F5E079 /* sendGazeToApp.js */,
 				AAD8531A2363C57100F5E079 /* Assets.xcassets */,
 				AAD8531C2363C57100F5E079 /* LaunchScreen.storyboard */,
 				AAD8531F2363C57100F5E079 /* Info.plist */,
+				AAD85336236557EE00F5E079 /* setCanvasOnce.js */,
+				AAD853252363C67B00F5E079 /* TrueGaze.framework */,
 			);
 			path = WebGazeBasics;
 			sourceTree = "<group>";
@@ -77,6 +117,7 @@
 				AAD8530A2363C56F00F5E079 /* Sources */,
 				AAD8530B2363C56F00F5E079 /* Frameworks */,
 				AAD8530C2363C56F00F5E079 /* Resources */,
+				AAD853292363C68200F5E079 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,8 +167,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD8531E2363C57100F5E079 /* LaunchScreen.storyboard in Resources */,
+				AAD853312363E28D00F5E079 /* sendGazeToApp.js in Resources */,
+				AAD85337236557EE00F5E079 /* setCanvasOnce.js in Resources */,
+				AAD853332363E3B000F5E079 /* setOnce.js in Resources */,
 				AAD8531B2363C57100F5E079 /* Assets.xcassets in Resources */,
 				AAD853192363C56F00F5E079 /* Main.storyboard in Resources */,
+				AAD853352363E49F00F5E079 /* parseWebpageOnce.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD8532F2363CD8500F5E079 /* WebData.swift in Sources */,
+				AAD8532B2363C6DB00F5E079 /* GazeData.swift in Sources */,
 				AAD853162363C56F00F5E079 /* ViewController.swift in Sources */,
 				AAD853122363C56F00F5E079 /* AppDelegate.swift in Sources */,
+				AAD8532D2363C9FA00F5E079 /* WebViewController.swift in Sources */,
 				AAD853142363C56F00F5E079 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +334,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMGDL6J6CA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebGazeBasics",
+				);
 				INFOPLIST_FILE = WebGazeBasics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +357,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMGDL6J6CA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebGazeBasics",
+				);
 				INFOPLIST_FILE = WebGazeBasics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
