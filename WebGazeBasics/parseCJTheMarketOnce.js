@@ -1,10 +1,11 @@
 
 
+
 /* parsing protocal variables setting */
 var productData = "";
-var productCount = 0; // 1
+//var productCount = 0; // 1
 var seperator = "|";
-
+var count = -1
 
 /* signal for start parsing */
 productData = "parseWebpageOnce.js| starting now"
@@ -12,31 +13,26 @@ callNativeApp();
 
 
 /* find suitable elements of a webpage */
-findElement();
+var webPathName = window.location.href;
+
+productData = "parseWebpageOnce.js|webPathName -> " + webPathName
+callNativeApp();
+
+if ( webPathName == "https://m.cjthemarket.com/mo/main" ) {
+    findMainPageElement();
+} else {
+    findProductPageElement();
+}
+    
 
 
-/* find element function */
-function findElement() {  // www.brandi.co.kr
+/* find element of main page  */
+function findMainPageElement() {
 
-    /* in case of brandi main page */
-    var elmt = document.querySelectorAll(".bannerBeforeLoad")   // ".bannerBeforeLoad" //".frame" ".lightSlider"
-    if (elmt.length > 0) {
-        elmt[0].style.height = "170px"
-        var elmtRect = elmt[0].getBoundingClientRect()
-        productData = "style.height|" + elmtRect.height.toString()
-        callNativeApp();
-    }
-    
-    //var elClass = document.querySelectorAll(".frame")
-    //var element = elClass[2].getElementsByTagName("img")
-    var element = document.getElementsByTagName("ul") //document.getElementsByTagName("img")
-    /* ending configurations of www.brandi.co.kr */
-    
-    
-    var count = -1
-    var webPathName = window.location.href;
-    
-    console.log(productData)
+    //var webPathName = window.location.href;
+    var element = document.querySelectorAll(".module-product__li")
+
+    console.log("find main page element()")
     
     for (var i = 0; i < element.length; i++) {
         var r = element[i].getBoundingClientRect();
@@ -60,26 +56,15 @@ function findElement() {  // www.brandi.co.kr
             /* draw rectacgle of product area */
             //drawLine(r.x, r.y, r.width, r.height, 5)
             
-            var el = element[i].querySelectorAll(".list_title")
+            var el = element[i].querySelectorAll(".module-product__title")
             if (el.length > 0) {
-                var str = el[0].innerText
-                var tempStr = ""
-                for (var j = 0; j < str.length - 1; j++) {
-                    tempStr = tempStr + str.charAt(j)
-                }
-                productData = count.toString() + seperator + "prdName" + seperator + tempStr //el[0].innerText //tempStr //
+                productData = count.toString() + seperator + "prdName" + seperator + el[0].innerText
                 callNativeApp()
             }
             
-            el = element[i].querySelectorAll(".normal_price")
+            el = element[i].getElementsByTagName("strong")
             if (el.length > 0) {
                 productData = count.toString() + seperator + "prdPrice" + seperator + el[0].innerText
-                callNativeApp()
-            }
-            
-            el = element[i].querySelectorAll(".list_seller")
-            if (el.length > 0) {
-                productData = count.toString() + seperator + "prdSeller" + seperator + el[0].innerText
                 callNativeApp()
             }
             
@@ -89,21 +74,80 @@ function findElement() {  // www.brandi.co.kr
                 callNativeApp()
             }
             
-            /*
-            var prdCategory = element[i].parentElement.parentElement.querySelector(".title").innerText
-            if (prdCategory.length > 0) {
-                productData = count.toString() + seperator + "prdCategory" + seperator + prdCategory
-                callNativeApp()
-            }
-            */
         }
     }
     
-    productData = "0|FindElementfinished" 
+    productData = "0|FindElementfinished"
     callNativeApp();
     
+}
+
+
+
+/* find element of product page  */
+function findProductPageElement() {
+    
+    console.log("find product page element()")
+    //var webPathName = window.location.href;
+    
+    var productClassName = [ ".slick-with-video-wrap", ".product-detail__top" ] //  product class name of www.cjthemarekt.com
+    var productIdName = [ "section-detail-info", "section-delivery-info", "section-review-info" ]
+    
+    for (var n = 0; n < productClassName.length; n++) {
+        var element = document.querySelectorAll( productClassName[n] );
+        for (var i = 0; i < element.length; i++) {
+            var r = element[i].getBoundingClientRect();
+            
+            if ( r.width >= 90 && r.height >= 90 ) {
+                count = count + 1
+                
+                productData = "\n"
+                callNativeApp()
+                
+                productData = count.toString() + seperator + "webPathURL" + seperator + webPathName
+                callNativeApp()
+                
+                productData = count.toString() + seperator + "prdRect" + seperator + r.x.toString() + seperator + r.y.toString() + seperator + r.width.toString() + seperator + r.height.toString()
+                callNativeApp()
+        
+                console.log(productClassName[n], " ", productData)
+                
+                /* draw rectacgle of product area */
+                //drawLine(r.x, r.y, r.width, r.height, 5)
+            }
+        }
+    }
+    
+    
+    for (var n = 0; n < productIdName.length; n++) {
+        var element = document.getElementById( productIdName[n] );
+        var r = element.getBoundingClientRect();
+        
+        if ( r.width >= 90 && r.height >= 90 ) {
+            count = count + 1
+            
+            productData = "\n"
+            callNativeApp()
+            
+            productData = count.toString() + seperator + "webPathURL" + seperator + webPathName
+            callNativeApp()
+            
+            productData = count.toString() + seperator + "prdRect" + seperator + r.x.toString() + seperator + r.y.toString() + seperator + r.width.toString() + seperator + r.height.toString()
+            callNativeApp()
+            console.log(productIdName[n], " ", productData)
+            
+            /* draw rectacgle of product area */
+            drawLine(r.x, r.y, r.width, r.height, 5)
+        }
+    }
+    
+    productData = "0|FindElementfinished"
+    callNativeApp();
     
 }
+
+
+
 
 
 /* message sending to WKWebView function */
@@ -114,7 +158,6 @@ function callNativeApp() {
         //console.log('The native context does not exist yet');
     }
 }
-
 
 
 

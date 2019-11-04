@@ -21,6 +21,6 @@ var elY = document.querySelectorAll(".gazeY")[0].firstElementChild  //elY.classN
 //productData = "gazePoint @javascript :" + seperator + elX.className + " " + elY.className
 //callNativeApp()
 
-
+var elRect = document.querySelectorAll(".rectangle")[0].firstElementChild 
 
 

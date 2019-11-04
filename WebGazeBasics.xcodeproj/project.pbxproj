@@ -21,7 +21,10 @@
 		AAD853312363E28D00F5E079 /* sendGazeToApp.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853302363E28D00F5E079 /* sendGazeToApp.js */; };
 		AAD853332363E3B000F5E079 /* setOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853322363E3AF00F5E079 /* setOnce.js */; };
 		AAD853352363E49F00F5E079 /* parseWebpageOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD853342363E49F00F5E079 /* parseWebpageOnce.js */; };
-		AAD85337236557EE00F5E079 /* setCanvasOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD85336236557EE00F5E079 /* setCanvasOnce.js */; };
+		AAD8535D236BF67600F5E079 /* parseCJTheMarketOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD8535C236BF67600F5E079 /* parseCJTheMarketOnce.js */; };
+		AAD8535F236D73EB00F5E079 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8535E236D73EB00F5E079 /* ReportViewController.swift */; };
+		AAD85361236E792500F5E079 /* GazeOnWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD85360236E792500F5E079 /* GazeOnWebViewController.swift */; };
+		AAD85363236EDE1900F5E079 /* drawCircle.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD85362236EDE1900F5E079 /* drawCircle.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +57,10 @@
 		AAD853302363E28D00F5E079 /* sendGazeToApp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sendGazeToApp.js; sourceTree = "<group>"; };
 		AAD853322363E3AF00F5E079 /* setOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setOnce.js; sourceTree = "<group>"; };
 		AAD853342363E49F00F5E079 /* parseWebpageOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parseWebpageOnce.js; sourceTree = "<group>"; };
-		AAD85336236557EE00F5E079 /* setCanvasOnce.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setCanvasOnce.js; sourceTree = "<group>"; };
+		AAD8535C236BF67600F5E079 /* parseCJTheMarketOnce.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = parseCJTheMarketOnce.js; sourceTree = "<group>"; };
+		AAD8535E236D73EB00F5E079 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		AAD85360236E792500F5E079 /* GazeOnWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazeOnWebViewController.swift; sourceTree = "<group>"; };
+		AAD85362236EDE1900F5E079 /* drawCircle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = drawCircle.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,16 +98,19 @@
 				AAD853132363C56F00F5E079 /* SceneDelegate.swift */,
 				AAD853152363C56F00F5E079 /* ViewController.swift */,
 				AAD8532C2363C9FA00F5E079 /* WebViewController.swift */,
+				AAD8535E236D73EB00F5E079 /* ReportViewController.swift */,
+				AAD85360236E792500F5E079 /* GazeOnWebViewController.swift */,
 				AAD8532A2363C6DB00F5E079 /* GazeData.swift */,
 				AAD8532E2363CD8500F5E079 /* WebData.swift */,
 				AAD853172363C56F00F5E079 /* Main.storyboard */,
 				AAD853322363E3AF00F5E079 /* setOnce.js */,
+				AAD85362236EDE1900F5E079 /* drawCircle.js */,
 				AAD853342363E49F00F5E079 /* parseWebpageOnce.js */,
+				AAD8535C236BF67600F5E079 /* parseCJTheMarketOnce.js */,
 				AAD853302363E28D00F5E079 /* sendGazeToApp.js */,
 				AAD8531A2363C57100F5E079 /* Assets.xcassets */,
 				AAD8531C2363C57100F5E079 /* LaunchScreen.storyboard */,
 				AAD8531F2363C57100F5E079 /* Info.plist */,
-				AAD85336236557EE00F5E079 /* setCanvasOnce.js */,
 				AAD853252363C67B00F5E079 /* TrueGaze.framework */,
 			);
 			path = WebGazeBasics;
@@ -166,10 +175,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD85363236EDE1900F5E079 /* drawCircle.js in Resources */,
 				AAD8531E2363C57100F5E079 /* LaunchScreen.storyboard in Resources */,
 				AAD853312363E28D00F5E079 /* sendGazeToApp.js in Resources */,
-				AAD85337236557EE00F5E079 /* setCanvasOnce.js in Resources */,
 				AAD853332363E3B000F5E079 /* setOnce.js in Resources */,
+				AAD8535D236BF67600F5E079 /* parseCJTheMarketOnce.js in Resources */,
 				AAD8531B2363C57100F5E079 /* Assets.xcassets in Resources */,
 				AAD853192363C56F00F5E079 /* Main.storyboard in Resources */,
 				AAD853352363E49F00F5E079 /* parseWebpageOnce.js in Resources */,
@@ -184,11 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD8532F2363CD8500F5E079 /* WebData.swift in Sources */,
+				AAD85361236E792500F5E079 /* GazeOnWebViewController.swift in Sources */,
 				AAD8532B2363C6DB00F5E079 /* GazeData.swift in Sources */,
 				AAD853162363C56F00F5E079 /* ViewController.swift in Sources */,
 				AAD853122363C56F00F5E079 /* AppDelegate.swift in Sources */,
 				AAD8532D2363C9FA00F5E079 /* WebViewController.swift in Sources */,
 				AAD853142363C56F00F5E079 /* SceneDelegate.swift in Sources */,
+				AAD8535F236D73EB00F5E079 /* ReportViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

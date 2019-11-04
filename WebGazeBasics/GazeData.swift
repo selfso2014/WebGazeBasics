@@ -12,6 +12,7 @@ import UIKit
 
 struct GazeData {
     var gazePoint : CGPoint = CGPoint(x: 0, y: 0)
+    var gazeWebPoint: CGPoint = CGPoint(x: 0, y: 0)
     var fixationFlag : Bool = false
     var saccadeFlag : Bool = false
     var longFixationFlag : Bool = false
@@ -30,6 +31,12 @@ class GazeDataHandler: NSObject { // usage: ojbect of DataStorage as dataStorage
         data[index].gazePoint = CGPoint(x: CGFloat(x), y: CGFloat(y))
     }
 
+    func setGazeWebPoint(index: Int, x: CGFloat, y: CGFloat) {
+        data[index].gazeWebPoint.x = x
+        data[index].gazeWebPoint.y = y
+    }
+    
+    
     func isFixation(index: Int) -> Bool {
         
         var tempX : CGFloat = 0.0
@@ -90,4 +97,12 @@ class GazeDataHandler: NSObject { // usage: ojbect of DataStorage as dataStorage
         return data.count - 1
     }
 
+    
+    func getGazeWebData(index: Int) -> CGPoint {
+        if index < 0 || index > data.count - 1 {
+            return CGPoint(x: 0, y: 0)
+        } else {
+            return data[index].gazeWebPoint
+        }
+    }
 }
