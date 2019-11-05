@@ -29,14 +29,13 @@ class ReportViewController: UIViewController {
         
         if backButtonClicked == false {
             /* calculating rank of fixation density in each product area */
-            let tempWebIndex = w.getCurrentWebIndex()
+            let tempWebIndex = 0 // main page product ranking only  // w.getCurrentWebIndex()
             let tempPrdIndex = w.getFinalPrdIndex(webIndex: tempWebIndex)
             //w.printAllPrd(webIndex: tempWebIndex)
             w.findPrdFixDensityRank(webIndex: tempWebIndex, prdIndex: tempPrdIndex)
-            //w.printWebPrdRank(webIndex: tempWebIndex)
-
+            w.printWebPrdRank(webIndex: tempWebIndex)
             /* display rank products */
-            displayRank(webIndex: tempWebIndex, productNumber: 4)
+            displayRank(webIndex: tempWebIndex, productNumber: 10)
             
             /* display button */
             displayButton()
@@ -71,12 +70,13 @@ class ReportViewController: UIViewController {
         for i in 0...(productNumber - 1) {
             
             // get main page prdocut info recommendation only
-            let tempRankInfo = w.getPrdRankInfo(webIndex: 0, prdIndex: i)
+            let tempRankInfo = w.getPrdRankInfo(webIndex: 0, rankIndex: i)
             let prdName = tempRankInfo.prdName
             let prdPrice = tempRankInfo.prdPrice
             let prdImageURL = tempRankInfo.prdImageURL
             
             // display prdocut
+            print("recommend #\(i) \(prdName) \(prdPrice) \(prdImageURL)")
             whiteView.contentSize = CGSize(width: screenWidth, height: 400 * CGFloat(i) + 700)
             displayPrd(x: 0.0, y: 400 * CGFloat(i) + 150.0, prdName: prdName, prdPrice: prdPrice, prdImageURL: prdImageURL)
         }

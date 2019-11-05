@@ -13,7 +13,7 @@ import WebKit
 
 
 struct WebData {
-    var webPathURL: URL = URL(string: "https://m.cjthemarket.com/")!
+    var webPathURL: URL = webpageURL //URL(string: "https://m.cjthemarket.com/")!
     var webFromIndex : Int = 0
     var webToIndex : Int = 0
     var prdData = [ProductData]()
@@ -25,7 +25,7 @@ struct ProductData {
     var prdName: String = ""
     var prdPrice: String = ""
     var prdSeller: String = ""
-    var prdImageURL: URL = URL(string: "https://m.cjthemarket.com/")!
+    var prdImageURL: URL = webpageURL  //URL(string: "https://m.cjthemarket.com/")!
     var prdGazeCount: Int = 0         // product_gaze_count      : all gaze counts including saccades and fixations
     var prdFixCount: Int = 0          // product_fixation_count  : gaze fixation counts only
     var prdFixDensity: CGFloat = 0.0  // product_fixation_density: gaze fixation denesity of each product AOI(Area Of Interests)
@@ -225,6 +225,9 @@ class WebDataHandler {
     
     
     func getFinalPrdIndex(webIndex: Int) -> Int {
+        if webIndex > 0 {
+            return 0
+        }
         return ( webData[webIndex].prdData.count - 1 )
     }
     
@@ -242,7 +245,7 @@ class WebDataHandler {
         return CGRect(x: minX, y: minY, width: width, height: height)
     }
     
-
+/*
     func getPrdRankInfo(webIndex: Int, prdIndex: Int) -> (prdName: String, prdPrice: String, prdImageURL: URL) {
         if prdIndex > getFinalPrdIndex(webIndex: webIndex) {
             return (prdName: "", prdPrice: "", prdImageURL:  URL(string: "https://www.google.com")!)
@@ -252,7 +255,18 @@ class WebDataHandler {
         let prdImageURL = webData[webIndex].prdData[prdIndex].prdImageURL
         return (prdName: prdName, prdPrice: prdPrice, prdImageURL: prdImageURL)
     }
+    */
     
+    func getPrdRankInfo(webIndex: Int, rankIndex: Int) -> (prdName: String, prdPrice: String, prdImageURL: URL) {
+        //if prdIndex > getFinalPrdIndex(webIndex: webIndex) {
+        //    return (prdName: "", prdPrice: "", prdImageURL:  URL(string: "https://www.google.com")!)
+        //}
+        let prdIndex = webPrdRank[rankIndex].prdIndex
+        let prdName = webData[webIndex].prdData[prdIndex].prdName
+        let prdPrice = webData[webIndex].prdData[prdIndex].prdPrice
+        let prdImageURL = webData[webIndex].prdData[prdIndex].prdImageURL
+        return (prdName: prdName, prdPrice: prdPrice, prdImageURL: prdImageURL)
+    }
     
     /* find functions */
     func findProductGazed(x: CGFloat, y: CGFloat) -> Int {
@@ -348,6 +362,7 @@ class WebDataHandler {
         let tempPrdIndex = webData[webIndex].prdData.count - 1
         for i in 0...tempPrdIndex {
             print(" webPrdRank #\(i)")
+            if i > getFinalPrdIndex(webIndex: webIndex) { break }
             let prdIndex = webPrdRank[i].prdIndex
             printPrd(webIndex: webIndex, prdIndex: prdIndex)
         }

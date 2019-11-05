@@ -9,6 +9,7 @@
 import UIKit
 import TrueGaze
 
+var webpageURL: URL = URL(string: "https://www.brandi.co.kr/"  )! // default gaze analysis webpage URL //  "https://www.cjthemarket.com/"
 
 var g: GazeDataHandler = GazeDataHandler()
 var screenWidth: CGFloat = 0.0
@@ -69,7 +70,7 @@ class ViewController: UIViewController {
         self.view.addSubview(cursorView)
         for _ in 0...9 {
             cursorLayer.append(CAShapeLayer())
-            self.view.layer.addSublayer(cursorLayer.last!)
+            self.cursorView.layer.addSublayer(cursorLayer.last!)
         }
         
         
@@ -174,6 +175,9 @@ class ViewController: UIViewController {
     }
     
 
+    func clearView() {
+        cursorView.layer.sublayers?.removeAll()
+    }
     
 }
 
@@ -199,7 +203,7 @@ extension ViewController : Receiver {
     func onCalibrationFinished() {
         print("Calibration is finished")
     
-        webViewController.loadingWebpage(url: URL(string: "https://www.cjthemarket.com/")!)  // "https://www.brandi.co.kr/"
+        webViewController.loadingWebpage(url: webpageURL) //URL(string: "https://www.cjthemarket.com/")!)  // "https://www.brandi.co.kr/"
         
         DispatchQueue.main.async {
             self.gazePt = UIView(frame: CGRect(x: self.view.frame.width/2 - self.gazeSize.width/2, y: self.view.frame.height/2 - self.gazeSize.height/2, width: self.gazeSize.width, height: self.gazeSize.height))
@@ -240,18 +244,24 @@ extension ViewController : Receiver {
                 self.gazePt?.frame.origin.y = CGFloat(xy[1]) - self.gazeSize.height/2
                 self.gazePt?.alpha = 0.7
                 
-                if w.prdGazedIndex >= 0 {
-                    /* proudct found case */
-                    self.gazePt?.backgroundColor = UIColor.red
+                if index < 100 {
+                    if w.prdGazedIndex >= 0 {
+                        /* proudct found case */
+                        self.gazePt?.backgroundColor = UIColor.red
+                        self.gazePt?.isHidden = true
+                        self.drawCircle2(p: CGPoint(x: xy[0], y: xy[1]), r: 70, alpha: 0.1, targeted: true)
+                        
+                    } else {
+                        self.gazePt?.backgroundColor = UIColor.blue
+                        self.gazePt?.isHidden = true
+                        self.drawCircle2(p: CGPoint(x: xy[0], y: xy[1]), r: 70, alpha: 0.1, targeted: false)
+                    }
+                } else if index == 100 {
                     self.gazePt?.isHidden = true
-                    self.drawCircle2(p: CGPoint(x: xy[0], y: xy[1]), r: 70, alpha: 0.1, targeted: true)
-                    
+                    self.clearView()
                 } else {
-                    self.gazePt?.backgroundColor = UIColor.blue
-                    self.gazePt?.isHidden = true
-                    self.drawCircle2(p: CGPoint(x: xy[0], y: xy[1]), r: 70, alpha: 0.1, targeted: false)
+                    // not shonwing gaze points any more
                 }
-                
             }
         } else if state == .faceMissing {
             print("face not found")

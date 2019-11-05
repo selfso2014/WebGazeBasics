@@ -38,7 +38,7 @@ class GazeOnWebViewController: UIViewController {
         
         let url = w.getWebURL(webIndex: w.getCurrentWebIndex())
         print("loading web url: \(url) #\(w.getCurrentWebIndex())")
-        webViewController.loadingWebpage(url: url)  //URL(string: "https://www.cjthemarket.com/")!
+        webViewController.loadingWebpage(url: url)  
         
         
         

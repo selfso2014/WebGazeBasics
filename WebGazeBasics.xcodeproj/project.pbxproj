@@ -25,6 +25,7 @@
 		AAD8535F236D73EB00F5E079 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8535E236D73EB00F5E079 /* ReportViewController.swift */; };
 		AAD85361236E792500F5E079 /* GazeOnWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD85360236E792500F5E079 /* GazeOnWebViewController.swift */; };
 		AAD85363236EDE1900F5E079 /* drawCircle.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD85362236EDE1900F5E079 /* drawCircle.js */; };
+		AAD85365236FF31400F5E079 /* parseBrandiOnce.js in Resources */ = {isa = PBXBuildFile; fileRef = AAD85364236FF31400F5E079 /* parseBrandiOnce.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		AAD8535E236D73EB00F5E079 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		AAD85360236E792500F5E079 /* GazeOnWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GazeOnWebViewController.swift; sourceTree = "<group>"; };
 		AAD85362236EDE1900F5E079 /* drawCircle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = drawCircle.js; sourceTree = "<group>"; };
+		AAD85364236FF31400F5E079 /* parseBrandiOnce.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = parseBrandiOnce.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				AAD85362236EDE1900F5E079 /* drawCircle.js */,
 				AAD853342363E49F00F5E079 /* parseWebpageOnce.js */,
 				AAD8535C236BF67600F5E079 /* parseCJTheMarketOnce.js */,
+				AAD85364236FF31400F5E079 /* parseBrandiOnce.js */,
 				AAD853302363E28D00F5E079 /* sendGazeToApp.js */,
 				AAD8531A2363C57100F5E079 /* Assets.xcassets */,
 				AAD8531C2363C57100F5E079 /* LaunchScreen.storyboard */,
@@ -177,6 +180,7 @@
 			files = (
 				AAD85363236EDE1900F5E079 /* drawCircle.js in Resources */,
 				AAD8531E2363C57100F5E079 /* LaunchScreen.storyboard in Resources */,
+				AAD85365236FF31400F5E079 /* parseBrandiOnce.js in Resources */,
 				AAD853312363E28D00F5E079 /* sendGazeToApp.js in Resources */,
 				AAD853332363E3B000F5E079 /* setOnce.js in Resources */,
 				AAD8535D236BF67600F5E079 /* parseCJTheMarketOnce.js in Resources */,

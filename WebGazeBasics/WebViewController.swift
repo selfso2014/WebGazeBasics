@@ -122,7 +122,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // setOnce.js & parseWebpageOnce.js
         javascriptInjection(file: "setOnce", strJS: "")
         //javascriptInjection(file: "parseWebpageOnce", strJS: "")
-        javascriptInjection(file: "parseCJTheMarketOnce", strJS: "")
+        javascriptInjection(file: "parseBrandiOnce", strJS: "")  // "parseCJTheMarketOnce",
         
         /* webIndex incrase & configuration setting */
         let webIndex = w.getCurrentWebIndex() + 1
@@ -319,7 +319,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 "drawCircle(" + String(tempX) + ", " + String(tempY) + ", " + String(tempRadius) + ", " + tempColor + ");\n"
             
         }
-        print("javascript: \(javascript)")
+        //print("javascript: \(javascript)")
         webViewController.javascriptInjection(file: "drawCircle", strJS: javascript)
         
     }
